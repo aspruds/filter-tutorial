@@ -21,7 +21,7 @@ class Application @Inject()(val messagesApi: MessagesApi,
   val DefaultSortOrder = SortOrder("surname", false)
 
   /**
-    * Initialize default filter (reports for the last month)
+    * Initialize default filter (users created since yesterday)
     */
   def index = Action.async {
 
