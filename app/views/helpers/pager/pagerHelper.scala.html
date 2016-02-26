@@ -1,0 +1,56 @@
+@(currentPage:Int, pageSize:Int, totalResults:Int, route:Int => String, bound:Int = 5)
+
+@lowbound() = @{
+    ((currentPage.toDouble / bound).floor * bound).toInt
+}
+
+@highbound() = @{
+    if ((lowbound() + bound) * pageSize >= totalResults)
+        totalResults / pageSize + 1
+    else
+        lowbound() + bound
+}
+
+@if(totalResults > pageSize) {
+    <nav>
+        <ul class="pagination">
+            @if(currentPage == 1) {
+                <li class="disabled"><a href="#">Previous</a></li>
+            } else {
+                <li><a href="@route(currentPage - 1)">Previous</a></li>
+            }
+
+            @if(currentPage < bound) {
+                <li class="disabled"><a href="#">&laquo;</a></li>
+            } else {
+                @if(lowbound() - bound <= 0) {
+                    <li><a href="@route(1)">&laquo;</a></li>
+                } else {
+                    <li><a href="@route(lowbound() - bound)">&laquo;</a></li>
+                }
+            }
+
+            @for( i <- lowbound().max(1) until currentPage) {
+                <li><a href="@route(i)">@i</a></li>
+            }
+
+            <li class="active"><a href="#">@currentPage</a></li>
+
+            @for( i <- currentPage + 1 to highbound() ) {
+                <li><a href="@route(i)">@i</a></li>
+            }
+
+            @if(highbound() * pageSize <= totalResults && highbound() > currentPage && currentPage * pageSize != totalResults) {
+                <li><a href="@route(highbound())">&raquo;</a></li>
+            } else {
+                <li class="disabled"><a href="#">&raquo;</a></li>
+            }
+
+            @if(currentPage < highbound()) {
+                <li><a href="@route(currentPage + 1)">Next</a></li>
+            } else {
+                <li class="disabled"><a href="#">Next</a></li>
+            }
+        </ul>
+    </nav>
+}

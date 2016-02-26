@@ -1,0 +1,19 @@
+form.header-account-info {color: #686868;}
+div.main-panels {margin-top: 20px;}
+
+table.reportsTable {font-size: 0.9em;}
+
+span#statusIds label {font-weight: normal;}
+
+form.formFilter div.date {width: auto;}
+form.formFilter div.date input {font-size: 0.8em; padding: 7px;}
+form.formFilter input.authorInput {width: 3em; padding-left: 0.5em;}
+form.formFilter input.deviceIdentifier {width: 100%;}
+form.formFilter dl {padding: 0; margin: 3px 0 3px 0;}
+form.formFilter dl.submit {margin: 10px 0 4px 0;}
+form.formFilter div.form-group {margin: 0 0 4px 0;}
+
+form.formFilter input.name {width: 8em;}
+form.formFilter input.surname {width: 8em;}
+
+table th span.sortArrow {font-size: 0.75em;}

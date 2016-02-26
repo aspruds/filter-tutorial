@@ -1,0 +1,18 @@
+@(title: String)(content: play.twirl.api.Html)(implicit messages: Messages)
+
+@import views.html.helpers.layouts.common.headers
+@import views.html.helpers.navigation.header
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>@title</title>
+        @headers(messages)
+        <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/fixed-header.css")"/>
+    </head>
+    <body>
+        @header(messages)
+        <div class="container">@content</div>
+    </body>
+</html>

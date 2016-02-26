@@ -1,0 +1,18 @@
+@(field: play.api.data.Field, args: (Symbol, Any)*)(implicit handler: helper.FieldConstructor, messages: Messages)
+
+@helper.input(field, args: _*) { (id, name, value, htmlArgs) =>
+    <div class="input-group date" id="@id">
+        <input type='text' name="@name" class="form-control" value="@value"/>
+        <span class="input-group-addon">
+            <span class="glyphicon glyphicon-calendar"></span>
+        </span>
+    </div>
+
+    <script type="text/javascript">
+        $(function () {
+            $('#@id').datetimepicker({
+                format: 'DD-MM-YYYY'
+            });
+        });
+    </script>
+}
