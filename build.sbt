@@ -34,6 +34,11 @@ libraryDependencies ++= Seq(
 
 libraryDependencies += "io.spray" % "spray-http_2.11" % "1.3.3"
 
+libraryDependencies ++= Seq(
+  "com.beachape" %% "enumeratum" % "1.4.9",
+  "com.beachape" %% "enumeratum-play" % "1.4.9"
+)
+
 pipelineStages := Seq(digest)
 
 // Play provides two styles of routers, one expects its actions to be injected, the

@@ -3,11 +3,11 @@ package controllers
 import javax.inject.Inject
 
 import controllers.ui.{FilterForm, SortOrderForm}
-import models.ui.{Pager, SortOrder}
+import models.ui.{Pager, SortField, SortOrder}
 import models.users.forms.Filter
 import org.joda.time.DateTime
 import persistence.users.{UserRepository, UserStatusRepository}
-import play.api.i18n.{MessagesApi, I18nSupport}
+import play.api.i18n.{I18nSupport, MessagesApi}
 import play.api.mvc._
 import views.html.screens.users.{list => listView}
 
@@ -18,7 +18,7 @@ class Application @Inject()(val messagesApi: MessagesApi,
                             userStatusRepository: UserStatusRepository) extends Controller
   with FilterForm with SortOrderForm with I18nSupport {
 
-  val DefaultSortOrder = SortOrder("surname", false)
+  val DefaultSortOrder = SortOrder(SortField.Surname, false)
 
   /**
     * Initialize default filter (users created since yesterday)

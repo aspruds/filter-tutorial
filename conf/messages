@@ -3,8 +3,10 @@ dateCreatedFrom=Created From
 dateCreatedUntil=Created Until
 statusIds=Status
 users=Users
-id=ID
-name=Name
-surname=Surname
-dateCreated=Date Created
+
+sortFields.Id=ID
+sortFields.Name=Name
+sortFields.Surname=Surname
+sortFields.DateCreated=Date Created
+
 noRecords=No records

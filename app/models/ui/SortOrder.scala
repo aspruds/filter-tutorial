@@ -1,3 +1,3 @@
 package models.ui
 
-case class SortOrder(code: String, desc: Boolean)
+case class SortOrder(field: SortField, desc: Boolean)

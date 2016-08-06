@@ -11,7 +11,7 @@ import play.api.db.slick.{HasDatabaseConfigProvider, DatabaseConfigProvider}
 import slick.driver.JdbcProfile
 import slick.lifted.ColumnOrdered
 import utils.db.{PortableJodaSupportComponent, MaybeFilterSupport}
-
+import models.ui.SortField
 import scala.concurrent.Future
 
 @ImplementedBy(classOf[DefaultUserRepository])
@@ -51,11 +51,11 @@ class DefaultUserRepository @Inject()(protected val dbConfigProvider: DatabaseCo
       }
     }
 
-    order.code match {
-      case "id" => r.id.ordered
-      case "name" => r.name.ordered
-      case "surname" => r.surname.ordered
-      case "dateCreated" => r.created.ordered
+    order.field match {
+      case SortField.Id => r.id.ordered
+      case SortField.Name => r.name.ordered
+      case SortField.Surname => r.surname.ordered
+      case SortField.DateCreated => r.created.ordered
       case _ => throw new Exception(s"unknown sortOrder: $order")
     }
   }
