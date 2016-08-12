@@ -18,6 +18,7 @@
 @dateFormat = {yyyy-MM-dd HH:mm}
 @import spray.http.Uri
 @import utils.date.DateUtils.DateTimeFormatterUtils
+@import models.ui.SortField
 
 @main(title = Messages("users")) {
     <div class="row main-panels">
@@ -78,10 +79,10 @@
             <table class="table table-striped table-condensed reportsTable">
                 <thead>
                     <tr>
-                        @sortUrl("id")
-                        @sortUrl("name")
-                        @sortUrl("surname")
-                        @sortUrl("dateCreated")
+                        @sortUrl(SortField.Id)
+                        @sortUrl(SortField.Name)
+                        @sortUrl(SortField.Surname)
+                        @sortUrl(SortField.DateCreated)
                     </tr>
                 </thead>
                 <tbody>
@@ -127,15 +128,15 @@
     }
 }
 
-@sortUrl(messageKey: String) = {
+@sortUrl(field: SortField) = {
     @defining(sortOrderForm.get) { sortOrder =>
-        @defining(messageKey == sortOrder.code) { isActive =>
+        @defining(field == sortOrder.field) { isActive =>
             <th @if(isActive){class="text-nowrap"}>
                 @sortArrow(isActive, sortOrder)
                 <a class="text-no" href="@Uri(controllers.routes.Application.list(1).url).withQuery(
-                    filterForm.data ++ sortOrderForm.data + ("sortBy" -> messageKey) + ("desc" -> sortDirection(isActive, sortOrder).toString())
+                    filterForm.data ++ sortOrderForm.data + ("sortBy" -> field.toString) + ("desc" -> sortDirection(isActive, sortOrder).toString())
                 ).toString()">
-                    @Messages(messageKey)
+                    @Messages("sortFields." + field.toString)
                 </a>
             </th>
         }
