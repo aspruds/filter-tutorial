@@ -3,9 +3,8 @@ package models.users.db
 import models.users.UserStatus
 import play.api.db.slick.HasDatabaseConfig
 import slick.driver.JdbcProfile
-import utils.db.PortableJodaSupportComponent
 
-trait UserStatusTableComponent extends PortableJodaSupportComponent {
+trait UserStatusTableComponent {
   this: HasDatabaseConfig[JdbcProfile] =>
 
   import driver.api._

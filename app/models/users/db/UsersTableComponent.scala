@@ -4,13 +4,13 @@ import models.users.User
 import org.joda.time.DateTime
 import play.api.db.slick.HasDatabaseConfig
 import slick.driver.JdbcProfile
-import utils.db.PortableJodaSupportComponent
+import utils.db.PortableJodaSupport
 
-trait UsersTableComponent extends PortableJodaSupportComponent {
+trait UsersTableComponent extends PortableJodaSupport {
   this: HasDatabaseConfig[JdbcProfile] =>
 
   import driver.api._
-  import PortableJodaSupport._
+  import JodaSupport._
 
   val users = TableQuery[UsersTable]
 

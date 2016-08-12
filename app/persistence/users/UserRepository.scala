@@ -10,7 +10,7 @@ import models.users.db.UsersTableComponent
 import play.api.db.slick.{HasDatabaseConfigProvider, DatabaseConfigProvider}
 import slick.driver.JdbcProfile
 import slick.lifted.ColumnOrdered
-import utils.db.{PortableJodaSupportComponent, MaybeFilterSupport}
+import utils.db.{PortableJodaSupport, MaybeFilterSupport}
 
 import scala.concurrent.Future
 
@@ -22,10 +22,10 @@ trait UserRepository {
 }
 
 class DefaultUserRepository @Inject()(protected val dbConfigProvider: DatabaseConfigProvider)
-  extends HasDatabaseConfigProvider[JdbcProfile] with UserRepository with UsersTableComponent with MaybeFilterSupport with PortableJodaSupportComponent {
+  extends HasDatabaseConfigProvider[JdbcProfile] with UserRepository with UsersTableComponent with MaybeFilterSupport with PortableJodaSupport {
 
   import driver.api._
-  import PortableJodaSupport._
+  import JodaSupport._
 
   def list(): Future[Seq[User]] = {
     val query = users.result
