@@ -1,7 +1,7 @@
 # Play / Slick with sorting, filtering and paging
 
 This project has been created as an example for the following functionality:
-  - Play 2.4.6. with Slick 3.1 and Play-Slick, including Evolutions
+  - Play 2.5.6. with Slick 3.1 and Play-Slick, including Evolutions
   - Slick Joda Date/Time extensions, including support for dynamic (play-slick) databases
   - Conditional filtering (Maybe monad in Slick 3.1)
   - Paging support
